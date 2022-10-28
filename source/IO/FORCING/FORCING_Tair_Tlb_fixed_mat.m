@@ -57,15 +57,7 @@ classdef FORCING_Tair_Tlb_fixed_mat < FORCING_base & READ_FORCING_mat
             %   all) data validity.
             
             variables = {'Tair'};
-            [data, times] = read_mat([forcing.PARA.forcing_path forcing.PARA.filename], variables);
-            
-            for i=1:size(variables,1)
-                if isfield(data, variables{i,1})
-                    forcing.DATA.(variables{i,1}) = data.(variables{i,1});
-                end
-            end
-
-            forcing.DATA.timeForcing = times;
+            forcing = read_mat(forcing, variables);
 
             forcing = check_and_correct(forcing); % Remove known errors
             forcing = set_start_and_end_time(forcing); % assign start/end time

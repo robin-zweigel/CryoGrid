@@ -69,17 +69,10 @@ classdef FORCING_seb_mat < FORCING_base & READ_FORCING_mat
         function forcing = finalize_init(forcing, tile)
             
             variables = {'rainfall'; 'snowfall'; 'Tair'; 'Lin'; 'Sin'; 'q'; 'wind'; 'p'};
-            [data, times] = read_mat([forcing.PARA.forcing_path forcing.PARA.filename], variables);
-            
-            for i=1:size(variables,1)
-                if isfield(data, variables{i,1})
-                    forcing.DATA.(variables{i,1}) = data.(variables{i,1});
-                end
-            end
+            forcing = read_mat(forcing, variables);
 
-            forcing.DATA.rainfall = data.rainfall.*forcing.PARA.rain_fraction;
-            forcing.DATA.snowfall = data.snowfall.*forcing.PARA.snow_fraction;
-            forcing.DATA.timeForcing = times;
+            forcing.DATA.rainfall = forcing.DATA.rainfall.*forcing.PARA.rain_fraction;
+            forcing.DATA.snowfall = forcing.DATA.snowfall.*forcing.PARA.snow_fraction;
             
             forcing = check_and_correct(forcing); % Remove known errors
             forcing = set_start_and_end_time(forcing); % assign start/end time

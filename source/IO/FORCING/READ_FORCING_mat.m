@@ -5,20 +5,21 @@ classdef READ_FORCING_mat < READ_FORCING_base
     end
     
     methods
-        function [data, times] = read_mat(full_file, variables)    %, start_date, end_date)
+        function forcing = read_mat(forcing, variables)    %, start_date, end_date)
             
-            temp = load(full_file, 'FORCING');
+            data = load([forcing.PARA.forcing_path forcing.PARA.filename] , 'FORCING');
    
             % Implement some cropping of data if start_date and end_date
             % are passed
 
             for i=1:size(variables,1)
-                if isfield(temp, variables{i,1})
-                    data.(variables{i,1}) = squeeze(temp.(variables{i,1}));
+                if isfield(data.FORCING.data, variables{i,1}) && ~strcmpi(variables{i,1}, 't_span')
+                    forcing.DATA.(variables{i,1}) = data.FORCING.data.(variables{i,1});
                 end
             end
 
-            times = data.t_span;
+            forcing.DATA.timeForcing = data.FORCING.data.t_span;
+
         end
 
     end    

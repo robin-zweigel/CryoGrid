@@ -17,15 +17,6 @@
 
 classdef FORCING_ubT_lbT_fixed < FORCING_base
     
-    properties
-        forcing_index
-        DATA            % forcing data time series
-        TEMP            % forcing data interpolated to a timestep
-        PARA            % parameters
-        STATUS         
-        CONST         
-    end
-    
     
     methods
 
@@ -59,10 +50,10 @@ classdef FORCING_ubT_lbT_fixed < FORCING_base
             forcing.STATUS = 1;
 
             % handle start time
-            forcing.PARA.start_time = datenum(forcing.PARA.start_time(1,1), forcing.PARA.start_time(2,1), forcing.PARA.start_time(3,1));
+            %forcing.PARA.start_time = datenum(forcing.PARA.start_time(1,1), forcing.PARA.start_time(2,1), forcing.PARA.start_time(3,1));
             
             % handle end time
-            forcing.PARA.end_time = datenum(forcing.PARA.end_time(1,1), forcing.PARA.end_time(2,1),forcing.PARA.end_time(3,1));
+            %forcing.PARA.end_time = datenum(forcing.PARA.end_time(1,1), forcing.PARA.end_time(2,1),forcing.PARA.end_time(3,1));
 
             % generate time sequence
             forcing.DATA.timeForcing = forcing.PARA.start_time:forcing.PARA.time_step:forcing.PARA.end_time;

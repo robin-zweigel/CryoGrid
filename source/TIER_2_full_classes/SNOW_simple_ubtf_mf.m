@@ -25,9 +25,9 @@ classdef SNOW_simple_ubtf_mf < HEAT_CONDUCTION & UB_TEMPERATURE_FORCING & SNOW &
             
             snow.PARA.density = []; % (initial) snow density [kg/m3]
             snow.PARA.swe_per_cell = []; % target SWE per grid cell [m]
+            snow.PARA.melt_threshold = []; % threshold air temperature for snow melt to occur [degC]
             snow.PARA.dt_max = []; % maximum possible timestep [sec]
             snow.PARA.dE_max = []; % maximum possible energy change per timestep [J/m3]
-            snow.PARA.melt_threshold = []; % threshold air temperature for snow melt to occur [degC]
         end
         
         
