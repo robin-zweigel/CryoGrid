@@ -13,6 +13,7 @@ classdef FORCING_base < matlab.mixin.Copyable
         CONST
         TEMP
         STATVAR
+        STATUS
         DATA            % forcing data time series
     end
     

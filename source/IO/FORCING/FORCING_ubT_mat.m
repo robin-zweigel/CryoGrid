@@ -49,13 +49,7 @@ classdef FORCING_ubT < FORCING_base & READ_FORCING_mat
         function forcing = finalize_init(forcing, tile)
           
             variables = {'T_ub'};
-            [data, times] = read_mat([forcing.PARA.forcing_path forcing.PARA.filename], variables);
-            
-            for i=1:size(variables,1)
-                if isfield(data, variables{i,1})
-                    forcing.DATA.(variables{i,1}) = data.(variables{i,1});
-                end
-            end
+            forcing = read_mat(forcing, variables);
 
             forcing = check_and_correct(forcing); % Remove known errors
             forcing = set_start_and_end_time(forcing); % assign start/end time

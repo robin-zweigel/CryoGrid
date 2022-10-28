@@ -18,7 +18,7 @@
 % T. Ingeman-Nielsen, S. Westermann, December 2021
 %========================================================================
 
-classdef FORCING_Tair_Tlb_fixed < matlab.mixin.Copyable
+classdef FORCING_Tair_Tlb_fixed_old < matlab.mixin.Copyable
     
     properties
         forcing_index

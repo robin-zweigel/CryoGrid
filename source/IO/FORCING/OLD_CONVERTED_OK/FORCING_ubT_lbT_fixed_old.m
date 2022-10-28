@@ -14,7 +14,7 @@
 %========================================================================
 
 
-classdef FORCING_ubT_lbT_fixed < matlab.mixin.Copyable
+classdef FORCING_ubT_lbT_fixed_old < matlab.mixin.Copyable
     
     properties
         forcing_index
